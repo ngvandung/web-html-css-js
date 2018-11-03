@@ -1,0 +1,1077 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Electrolize', Arial, sans-serif;
+        }
+
+        #body-left {
+            height: 768px;
+            width: 18%;
+            background-color: rgb(15, 14, 14);
+            float: left;
+            position: fixed;
+            z-index: 99;
+        }
+
+        #body-left .logo {
+            height: 150px;
+            width: 100%;
+            text-align: center;
+            padding-top: 20px;
+            overflow: hidden;
+        }
+
+        #body-left .logo img {
+            border-radius: 50%;
+            height: 150px;
+            width: 150px;
+        }
+
+        #body-left .menu-left {
+            padding-top: 20px;
+        }
+
+        #body-left .menu-left ul {
+            list-style: none;
+            text-align: center;
+            margin: 0;
+            padding: 0 30px 0 0;
+        }
+
+        #body-left .menu-left ul li {
+            border-bottom: 1px solid rgb(255, 255, 255);
+            margin-top: 5px;
+            font-size: 14px;
+            position: relative;
+            color: rgb(255, 255, 255);
+            line-height: 47px;
+        }
+
+        #body-left .menu-left ul li:after {
+            position: absolute;
+            left: 0;
+            content: '';
+            height: 100%;
+            background-color: rgba(28, 186, 200, 0.603);
+            transition: all 0.2s linear;
+            width: 0;
+        }
+
+        #body-left .menu-left ul li:hover:after {
+            width: 100%;
+        }
+
+        #body-right {
+            height: 768px;
+            width: 82%;
+            background-color: #808080;
+            float: right;
+            position: relative;
+            background-image: url('/image/background.jpg');
+            background-position: center center;
+            background-size: cover;
+        }
+
+        #body-right .content {
+            top: 30px;
+            left: 50px;
+            position: absolute;
+            height: 600px;
+            width: 1000px;
+            margin-left: -1200px;
+            transition: 0.7s;
+            background-color: white;
+        }
+
+        #body-right .content .title {
+            text-transform: uppercase;
+            font-size: 20px;
+            color: black;
+            margin-top: 20px;
+            width: 250px;
+            padding: 10px 0;
+            margin-left: 20px;
+        }
+
+        .border-bottom {
+            transition: 2s;
+            width: 0;
+            height: 3px;
+            background-color: blue;
+        }
+
+        .border-bottom.showborder {
+            width: 250px;
+        }
+
+        #body-right .container {
+            margin-top: 15px;
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .more-data {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            background-color: #bbe0c3;
+        }
+
+        .more-data .next-page, .pre-page {
+            padding: 0 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .more-data span {
+            font-size: 14px;
+        }
+
+        .more-data .number-page {
+            padding: 3px;
+            background-color: white;
+            color: black;
+            border-radius: 5px;
+        }
+
+        .option-post .option {
+            float: left;
+            margin-right: 5px;
+        }
+
+        .option-post .option button {
+            border: none;
+            height: 16px;
+            background-color: rgb(28, 186, 200);
+            border-radius: 2px;
+            color: white;
+        }
+
+        .option-post .option button:hover {
+            cursor: pointer;
+            background-color: rgb(29, 206, 222);
+        }
+
+        table tr th, td {
+            text-align: center;
+        }
+
+        #body-right .three {
+            background-color: #eae9e9;
+        }
+
+        #body-right .three .container .top-left {
+            height: 300px;
+            width: 300px;
+            background-color: white;
+            border: 1px solid gray;
+            float: left;
+        }
+
+        #body-right .three .container .top-left .title-circle {
+            font-weight: bold;
+            padding-top: 5px;
+            padding-left: 10px;
+        }
+
+        #body-right .three .container .top-right {
+            height: 300px;
+            width: 600px;
+            background-color: white;
+            border: 1px solid gray;
+            float: left;
+            margin-left: 30px;
+        }
+
+        #body-right .three .container .bottom-left {
+            height: 200px;
+            width: 450px;
+            background-color: white;
+            border: 1px solid gray;
+            float: left;
+            margin-top: 15px;
+        }
+
+        #body-right .three .container .bottom-right {
+            height: 200px;
+            width: 420px;
+            background-color: white;
+            border: 1px solid gray;
+            float: left;
+            margin-top: 15px;
+            margin-left: 30px;
+        }
+
+        #body-right .dashboard {
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        #body-right .dashboard .menu {
+            width: 100%;
+            height: 40px;
+            background-color: white;
+            margin-top: 20px;
+        }
+
+        #body-right .dashboard .statistics {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        #body-right .dashboard .statistics .box {
+            width: 240px;
+            height: 150px;
+            background-color: white;
+            position: relative;
+        }
+
+        #body-right .dashboard .server {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        #body-right .dashboard .server .box {
+            width: 500px;
+            height: 400px;
+            background-color: white;
+        }
+
+        #body-right .dashboard .server .sale {
+            border-top: 4px solid red;
+        }
+
+        #body-right .dashboard .server .map {
+            border-top: 4px solid yellow;
+        }
+
+        #body-right .dashboard .statistics .Oders {
+            background-color: deepskyblue;
+        }
+
+        #body-right .dashboard .statistics .Rate {
+            background-color: #4ecc4e;
+        }
+
+        #body-right .dashboard .statistics .User {
+            background-color: orange;
+        }
+
+        #body-right .dashboard .statistics .Visitors {
+            background-color: #e43535;
+        }
+
+        #body-right .dashboard .statistics .box .more-info a {
+            text-decoration: none;
+            color: white;
+        }
+
+        #body-right .dashboard .statistics .box .more-info {
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 5px 0;
+            color: white;
+        }
+
+        #body-right .dashboard .statistics .box .more-info:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        #body-right .dashboard .statistics .box .view {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+        }
+
+        #body-right .dashboard .statistics .box .title-box {
+            position: absolute;
+            top: 70px;
+            left: 10px;
+            font-size: 15px;
+            color: white;
+        }
+
+        #body-right .dashboard .statistics .box .fa-shopping-bag {
+            position: absolute;
+            font-size: 100px;
+            right: 10px;
+            top: 10px;
+            opacity: 0.3;
+        }
+
+        #body-right .dashboard .statistics .box .fa-chart-bar {
+            position: absolute;
+            font-size: 100px;
+            right: 10px;
+            top: 10px;
+            opacity: 0.3;
+        }
+
+        #body-right .dashboard .statistics .box .fa-user-plus {
+            position: absolute;
+            font-size: 80px;
+            right: 5px;
+            top: 20px;
+            opacity: 0.3;
+        }
+
+        #body-right .dashboard .statistics .box .fa-chart-pie {
+            position: absolute;
+            font-size: 100px;
+            right: 10px;
+            top: 10px;
+            opacity: 0.3;
+        }
+
+        #body-right .dashboard .menu {
+            padding: 0 10px;
+        }
+
+        #body-right .dashboard .menu .title-menu {
+            line-height: 40px;
+            font-size: 20px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+    <script src="/javascripts/Jquery.js"></script>
+</head>
+<body>
+    <div id="body-left">
+        <div class="logo">
+            <img src="/image/logo.jpg" />
+        </div>
+        <div class="menu-left">
+            <ul>
+                <li class="menu" onclick="outshow();">DASHBOARD</li>
+                <li class="menu" onclick="show1();">BÀI ĐĂNG</li>
+                <li class="menu" onclick="show2();">THÀNH VIÊN</li>
+                <li class="menu" onclick="show3()">THỐNG KÊ</li>
+                <li class="menu" onclick="show4()">THỨ HẠNG WEB</li>
+                <li class="menu" onclick="show5()">ĐĂNG BÀI</li>
+                <li class="menu" onclick="show6()">ĐĂNG XUẤT</li>
+            </ul>
+        </div>
+    </div>
+    <div id="body-right">
+        <div class="dashboard">
+            <div class="menu">
+                <div class="title-menu">Dashboard <small style="color: gray; font-size: 14px">Control panel</small></div>
+            </div>
+            <div class="statistics">
+                <div class="box Oders">
+                    <div class="view view-oders">150</div>
+                    <div class="title-box">New Oders</div>
+                    <div class="more-info oders"><a href="#">More info</a> <i class="fas fa-arrow-circle-right"></i></div>
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="box Rate">
+                    <div class="view view-rate">53%</div>
+                    <div class="title-box">Bounce Rate</div>
+                    <div class="more-info oders"><a href="#">More info</a> <i class="fas fa-arrow-circle-right"></i></div>
+                    <i class="far fa-chart-bar"></i>
+                </div>
+                <div class="box User">
+                    <div class="view view-user">44</div>
+                    <div class="title-box">User Registrations</div>
+                    <div class="more-info oders"><a href="#">More info</a> <i class="fas fa-arrow-circle-right"></i></div>
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <div class="box Visitors">
+                    <div class="view view-visitors">65</div>
+                    <div class="title-box">Unique Visitors</div>
+                    <div class="more-info oders"><a href="#">More info</a> <i class="fas fa-arrow-circle-right"></i></div>
+                    <i class="fas fa-chart-pie"></i>
+                </div>
+            </div>
+            <div class="server">
+                <canvas class="box sale" width="500" height="400"></canvas>
+                <script>
+                    var ctx = document.getElementsByClassName('sale')[0].getContext('2d');
+                    var myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ["2013", "2014", "2015", "2016", "2017", "2018"],
+                            datasets: [{
+                                label: 'View Site',
+                                data: [2, 3, 4, 7, 9, 13],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                    'rgba(255, 159, 64, 0.2)'
+                                ],
+                                borderColor: [
+                                    'rgba(255,99,132,1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: false
+                        }
+                    });
+                </script>
+                <canvas class="box map" width="500" height="400"></canvas>
+                <script>
+                    new Chart(document.getElementsByClassName('map')[0], {
+                        type: 'line',
+                        data: {
+                            labels: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018],
+                            datasets: [{
+                                data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
+                                label: "Africa",
+                                borderColor: "#3e95cd",
+                                fill: false
+                            }, {
+                                data: [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267],
+                                label: "Asia",
+                                borderColor: "#8e5ea2",
+                                fill: false
+                            }, {
+                                data: [168, 170, 178, 190, 203, 276, 408, 547, 675, 734],
+                                label: "Europe",
+                                borderColor: "#3cba9f",
+                                fill: false
+                            }, {
+                                data: [40, 20, 10, 16, 24, 38, 74, 167, 508, 784],
+                                label: "Latin America",
+                                borderColor: "#e8c3b9",
+                                fill: false
+                            }, {
+                                data: [6, 3, 2, 2, 7, 26, 82, 172, 312, 433],
+                                label: "North America",
+                                borderColor: "#c45850",
+                                fill: false
+                            }
+                            ]
+                        },
+                        options: {
+                            responsive: false
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+        <div class="content one">
+            <div class="title">
+                Thống kê bài đăng
+                <div class="border-bottom"></div>
+            </div>
+            <div class="container">
+                <table border="1" cellspacing="0" cellpadding="5" width="100%" align="center">
+                    <tr>
+                        <th>STT</th>
+                        <th>Tiêu đề</th>
+                        <th>Mô tả ngắn</th>
+                        <th>Lượt xem</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Game rắn săn mồi</td>
+                        <td>Tựa game rắn săn mồi trên điện thoại nay đã có trên những chiếc Laptop</td>
+                        <td>13.000</td>
+                        <td>
+                            <div class="option-post">
+                                <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                <div class="option edit"><button class="btn-edit">Edit</button></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="more-data">
+                    <div class="pre-page"><</div>
+                    <div class="middle-option">
+                        <span>Page</span>
+                        <span class="number-page">1</span>
+                        <span>Of 3</span>
+                    </div>
+                    <div class="next-page">></div>
+                </div>
+            </div>
+        </div>
+        <div class="content two">
+            <div class="title">
+                Tài khoản khách hàng
+                <div class="border-bottom"></div>
+            </div>
+            <div class="container">
+                <div class="user-data">
+                    <table border="1" cellspacing="0" cellpadding="5" width="100%" align="center">
+                        <tr>
+                            <th>STT</th>
+                            <th>Username</th>
+                            <th>Ngày đăng ký</th>
+                            <th></th>
+                            <th>Select All</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>nguyenvandung</td>
+                            <td>03/11/2012</td>
+                            <td>
+                                <div class="option-post">
+                                    <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                    <div class="option edit"><button class="btn-edit">Edit</button></div>
+                                </div>
+                            </td>
+                            <td><input type="checkbox" /></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>nguyentandung</td>
+                            <td>03/11/2012</td>
+                            <td>
+                                <div class="option-post">
+                                    <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                    <div class="option edit"><button class="btn-edit">Edit</button></div>
+                                </div>
+                            </td>
+                            <td><input type="checkbox" /></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>nguyentandung</td>
+                            <td>03/11/2012</td>
+                            <td>
+                                <div class="option-post">
+                                    <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                    <div class="option edit"><button class="btn-edit">Edit</button></div>
+                                </div>
+                            </td>
+                            <td><input type="checkbox" /></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>nguyentandung</td>
+                            <td>03/11/2012</td>
+                            <td>
+                                <div class="option-post">
+                                    <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                    <div class="option edit"><button class="btn-edit">Edit</button></div>
+                                </div>
+                            </td>
+                            <td><input type="checkbox" /></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>nguyentandung</td>
+                            <td>03/11/2012</td>
+                            <td>
+                                <div class="option-post">
+                                    <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                    <div class="option edit"><button class="btn-edit">Edit</button></div>
+                                </div>
+                            </td>
+                            <td><input type="checkbox" /></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>nguyentandung</td>
+                            <td>03/11/2012</td>
+                            <td>
+                                <div class="option-post">
+                                    <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                    <div class="option edit"><button class="btn-edit">Edit</button></div>
+                                </div>
+                            </td>
+                            <td><input type="checkbox" /></td>
+                        <tr>
+                            <td>2</td>
+                            <td>nguyentandung</td>
+                            <td>03/11/2012</td>
+                            <td>
+                                <div class="option-post">
+                                    <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                    <div class="option edit"><button class="btn-edit">Edit</button></div>
+                                </div>
+                            </td>
+                            <td><input type="checkbox" /></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>nguyentandung</td>
+                            <td>03/11/2012</td>
+                            <td>
+                                <div class="option-post">
+                                    <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                    <div class="option edit"><button class="btn-edit">Edit</button></div>
+                                </div>
+                            </td>
+                            <td><input type="checkbox" /></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>nguyentandung</td>
+                            <td>03/11/2012</td>
+                            <td>
+                                <div class="option-post">
+                                    <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                    <div class="option edit"><button class="btn-edit">Edit</button></div>
+                                </div>
+                            </td>
+                            <td><input type="checkbox" /></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>nguyentandung</td>
+                            <td>03/11/2012</td>
+                            <td>
+                                <div class="option-post">
+                                    <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                    <div class="option edit"><button class="btn-edit">Edit</button></div>
+                                </div>
+                            </td>
+                            <td><input type="checkbox" /></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>nguyentandung</td>
+                            <td>03/11/2012</td>
+                            <td>
+                                <div class="option-post">
+                                    <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                    <div class="option edit"><button class="btn-edit">Edit</button></div>
+                                </div>
+                            </td>
+                            <td><input type="checkbox" /></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>nguyentandung</td>
+                            <td>03/11/2012</td>
+                            <td>
+                                <div class="option-post">
+                                    <div class="option delete"><button class="btn-delete">Delete</button></div>
+                                    <div class="option edit"><button class="btn-edit">Edit</button></div>
+                                </div>
+                            </td>
+                            <td><input type="checkbox" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="more-data">
+                    <div class="pre-page"><</div>
+                    <div class="middle-option">
+                        <span>Page</span>
+                        <span class="number-page">1</span>
+                        <span>Of 3</span>
+                    </div>
+                    <div class="next-page">></div>
+                </div>
+            </div>
+        </div>
+        <div class="content three">
+            <div class="title">
+                Thống kê
+                <div class="border-bottom"></div>
+            </div>
+            <div class="container">
+                <div class="top-left">
+                    <div class="title-circle">
+                        Email Statistics
+                        <small style="margin: 0;"><br />Last Campaign Perfomance</small>
+                    </div>
+                    <canvas class="circle" width="300" height="250"></canvas>
+
+                </div>
+                <div class="top-right" style="text-align: center"><img src="/image/chart1.png" /></div>
+                <div class="bottom-left" style="text-align: center"><img src="/image/chart2.png" style="height: 200px;" /></div>
+                <div class="bottom-right">
+                    <div class="title-bottom-right" style="font-weight: bold; border-bottom: 1px solid gray; padding: 5px 10px;">Tasks<small style="margin:0; color: gray;"><br />Backend development</small></div>
+                    <div class="content-bottom-right" style="display: flex; padding: 7px 10px; align-items: center; border-bottom: 1px solid gray;">
+                        <input type="checkbox" />
+                        <p style="margin: 0; padding-left: 10px; font-weight: bold;">Giao diện là một trong những thành phần cần thiết để thiết kế website</p>
+                    </div>
+                    <div class="content-bottom-right" style="display: flex; padding: 7px 10px; align-items: center; border-bottom: 1px solid gray;">
+                        <input type="checkbox" />
+                        <p style="margin: 0; padding-left: 10px; font-weight: bold;">Giao diện là một trong những thành phần cần thiết để thiết kế website</p>
+                    </div>
+                    <div class="content-bottom-right" style="display: flex; padding: 7px 10px; align-items: center; border-bottom: 1px solid gray;">
+                        <input type="checkbox" />
+                        <p style="margin: 0; padding-left: 10px; font-weight: bold;">Giao diện là một trong những thành phần cần thiết để thiết kế website</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content four">
+            <div class="title">
+                WEB
+                <div class="border-bottom"></div>
+            </div>
+        </div>
+        <div class="content five">
+            <div class="title">
+                Đăng bài
+                <div class="border-bottom"></div>
+            </div>
+        </div>
+        <div class="content six">
+            <div class="title">
+                Thống kê
+                <div class="border-bottom"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function show1() {
+        $('.one').css('margin-left', '-10px');
+        $('.one').css('transition', '0.7s');
+        $('.two').css('margin-left', '-1200px');
+        $('.three').css('margin-left', '-1200px');
+        $('.four').css('margin-left', '-1200px');
+        $('.five').css('margin-left', '-1200px');
+        document.getElementsByClassName('border-bottom')[0].classList.add('showborder');
+        document.getElementsByClassName('border-bottom')[2].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[3].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[4].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[1].classList.remove('showborder');
+        $('.dashboard').css('visibility', 'hidden');
+        $('.dashboard').css('transition', '0.7s');
+        $('.dashboard').css('opacity', '0');
+    }
+    function show2() {
+        $('.two').css('margin-left', '-10px');
+        $('.two').css('transition', '0.7s');
+        $('.one').css('margin-left', '-1200px');
+        $('.three').css('margin-left', '-1200px');
+        $('.four').css('margin-left', '-1200px');
+        $('.five').css('margin-left', '-1200px');
+        document.getElementsByClassName('border-bottom')[0].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[2].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[3].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[4].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[1].classList.add('showborder');
+        $('.dashboard').css('visibility', 'hidden');
+        $('.dashboard').css('transition', '0.7s');
+        $('.dashboard').css('opacity', '0');
+    }
+    function show3() {
+        $('.three').css('margin-left', '-10px');
+        $('.three').css('transition', '0.7s');
+        $('.one').css('margin-left', '-1200px');
+        $('.two').css('margin-left', '-1200px');
+        $('.four').css('margin-left', '-1200px');
+        $('.five').css('margin-left', '-1200px');
+        document.getElementsByClassName('border-bottom')[0].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[1].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[3].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[4].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[2].classList.add('showborder');
+        $('.dashboard').css('visibility', 'hidden');
+        $('.dashboard').css('transition', '0.7s');
+        $('.dashboard').css('opacity', '0');
+
+        new Chart(document.getElementsByClassName('circle')[0], {
+            type: 'pie',
+            data: {
+                labels: ["Africa", "Asia", "Europe"],
+                datasets: [{
+                    label: "Population (millions)",
+                    backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f"],
+                    data: [2478, 5267, 734]
+                }]
+            },
+            options: {
+                responsive: false
+            }
+        });
+    }
+    function show4() {
+        $('.four').css('margin-left', '-10px');
+        $('.four').css('transition', '0.7s');
+        $('.one').css('margin-left', '-1200px');
+        $('.two').css('margin-left', '-1200px');
+        $('.three').css('margin-left', '-1200px');
+        $('.five').css('margin-left', '-1200px');
+        document.getElementsByClassName('border-bottom')[0].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[1].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[2].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[4].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[3].classList.add('showborder');
+        $('.dashboard').css('visibility', 'hidden');
+        $('.dashboard').css('transition', '0.7s');
+        $('.dashboard').css('opacity', '0');
+    }
+    function show5() {
+        $('.five').css('margin-left', '-10px');
+        $('.four').css('transition', '0.7s');
+        $('.one').css('margin-left', '-1200px');
+        $('.two').css('margin-left', '-1200px');
+        $('.three').css('margin-left', '-1200px');
+        $('.four').css('margin-left', '-1200px');
+        document.getElementsByClassName('border-bottom')[0].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[1].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[2].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[3].classList.remove('showborder');
+        document.getElementsByClassName('border-bottom')[4].classList.add('showborder');
+        $('.dashboard').css('visibility', 'hidden');
+        $('.dashboard').css('transition', '0.7s');
+        $('.dashboard').css('opacity', '0');
+    }
+    function show6() {
+        window.location.assign('/homepage.aspx');
+    }
+    function outshow() {
+        $('.two').css('margin-left', '-1200px');
+        $('.one').css('margin-left', '-1200px');
+        $('.three').css('margin-left', '-1200px');
+        $('.four').css('margin-left', '-1200px');
+        $('.five').css('margin-left', '-1200px');
+        document.getElementsByClassName('border-bottom')[0].classList.remove('showborder');
+        $('.dashboard').css('visibility', 'visible');
+        $('.dashboard').css('transition', '0.7s');
+        $('.dashboard').css('opacity', '1');
+
+        var ctx = document.getElementsByClassName('sale')[0].getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["2013", "2014", "2015", "2016", "2017", "2018"],
+                datasets: [{
+                    label: 'View Site',
+                    data: [2, 3, 4, 7, 9, 13],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: false
+            }
+        });
+
+        new Chart(document.getElementsByClassName('map')[0], {
+            type: 'line',
+            data: {
+                labels: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018],
+                datasets: [{
+                    data: [86, 114, 106, 106, 107, 111, 133, 221, 783, 2478],
+                    label: "Africa",
+                    borderColor: "#3e95cd",
+                    fill: false
+                }, {
+                    data: [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267],
+                    label: "Asia",
+                    borderColor: "#8e5ea2",
+                    fill: false
+                }, {
+                    data: [168, 170, 178, 190, 203, 276, 408, 547, 675, 734],
+                    label: "Europe",
+                    borderColor: "#3cba9f",
+                    fill: false
+                }, {
+                    data: [40, 20, 10, 16, 24, 38, 74, 167, 508, 784],
+                    label: "Latin America",
+                    borderColor: "#e8c3b9",
+                    fill: false
+                }, {
+                    data: [6, 3, 2, 2, 7, 26, 82, 172, 312, 433],
+                    label: "North America",
+                    borderColor: "#c45850",
+                    fill: false
+                }
+                ]
+            },
+            options: {
+                responsive: false
+            }
+        });
+    }
+</script>
+<script src="/javascripts/Jquery.js"></script>
+</html>

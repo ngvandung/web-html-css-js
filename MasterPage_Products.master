@@ -1,0 +1,164 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage_Homepage.master" AutoEventWireup="true" CodeFile="MasterPage_Products.master.cs" Inherits="MasterPage_Products" %>
+
+<%@ Register Src="~/modules/UC_doannoibat.ascx" TagPrefix="uc1" TagName="UC_doannoibat" %>
+<%@ Register Src="~/modules/UC_bannertext.ascx" TagPrefix="uc1" TagName="UC_bannertext" %>
+<%@ Register Src="~/modules/UC_video.ascx" TagPrefix="uc1" TagName="UC_video" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="style_products" Runat="Server">
+    <style>
+        #body{
+            padding: 30px 0;
+        }
+
+        #body .container .body-left{
+            width: 80%;
+            margin: 0;
+            border: 0;
+            float: left;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        #body .container .body-left .left-title{
+            text-transform: uppercase;
+            font-size: 30px;
+            font-weight: bold;
+            border-bottom: 3px solid blue;
+            width: 300px;
+            padding: 0 10px;
+        }
+
+        #body .container .body-left .options-sort{
+            margin-top: 10px;
+            background-color: #dadada;
+            width: 100%;
+            height: 45px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 30px;
+            box-sizing: border-box;
+        }
+
+        #body .container .body-left .options-sort a{
+            text-decoration: none;
+            display: block;
+            color: black;
+        }
+
+        #body .container .body-left .options-sort button{
+            height: 30px;
+            width: 100px;
+            border: none;
+            background-color: white;
+            margin-right: 10px;
+        }
+
+        #body .container .body-left .options-sort button:hover{
+            background-color: #e60858;
+        }
+
+        #body .container .body-left .options-sort button:hover a{
+            color: white;
+        }
+
+        #body .container .body-left .options-sort span{
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        #body .container .body-left .list-products{
+            clear: both;
+        }
+
+        #body .container .body-left .list-products .product{
+            height: 250px;
+            background-color: white;
+            width: 21%;
+            text-align: center;
+            display: inline-block;
+            margin: 1em 1.2em;
+            box-sizing: border-box;
+            border-radius: 5px;
+        }
+
+        #body .container .body-left .list-products .product .image img{
+            width: 188.95px;
+            height: 200px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        #body .container .body-left .list-products .product .title{
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        #body .container .body-left .list-products .product .price{
+            color: gray;
+            font-style: italic;
+            font-size: 13px;
+        }
+
+        #body .container .body-left .left-title{
+            margin-top: 10px;
+        }
+
+        #body .container .body-right{
+            width: 20%;
+            margin: 0;
+            border: 0;
+            float: right;
+        }
+        
+        #body .container .body-right .title{
+            height: 40px;
+            width: 100%;
+            background-color: #e60858;
+            color: white;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="body" Runat="Server">
+    <div id="body">
+        <div class="container">
+            <uc1:UC_bannertext runat="server" ID="UC_bannertext" />
+            <div class="img-banner"></div>
+            <div class="body-left">
+                <div class="left-title main">đồ án chất lượng</div>
+                <div class="options-sort">
+                    <span>Sắp xếp</span>
+                    <button class="btn-mostnew"><a href="#">Mới nhất</a></button>
+                    <button class="btn-mostview"><a href="#">Xem nhiều</a></button>
+                    <button class="btn-mostdown"><a href="#">Tải nhiều</a></button>
+                </div>
+                <div class="list-products">
+                    <asp:ContentPlaceHolder id="product" runat="server">
+        
+                    </asp:ContentPlaceHolder>
+                </div>
+                <div class="left-title more-products">GỢI Ý CHO BẠN</div>
+                <div class="list-products">
+                    <asp:ContentPlaceHolder id="product2" runat="server">
+        
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <uc1:UC_doannoibat runat="server" ID="UC_doannoibat" />
+            <uc1:UC_video runat="server" ID="UC_video" />
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+</asp:Content>
+
+
+

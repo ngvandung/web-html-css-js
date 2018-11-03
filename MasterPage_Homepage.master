@@ -1,0 +1,114 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage_Homepage.master.cs" Inherits="MasterPage_Homepage" %>
+
+<%@ Register Src="~/modules/UC_login.ascx" TagPrefix="uc1" TagName="UC_login" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Ngx Dungx | Nhận Làm Thuê Và Bán Đồ Án Các Môn</title>
+    <link href="/stylesheets/Style.css" rel="stylesheet" />
+    <meta name="viewport" charset="utf-8" content="width=device-width, initial-scale=1"/>
+	<script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+	<link rel="icon" href="https://www.gstatic.com/images/branding/product/ico/google_fonts_lodp.ico" type="image/x-icon"/>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"/>
+    <asp:ContentPlaceHolder id="style_products" runat="server">   
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder id="style_detailproduct" runat="server">   
+    </asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder id="style" runat="server">   
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <uc1:UC_login runat="server" ID="UC_login" />
+    <div id="header">
+		<div class="top-header">
+			<div class="container">
+				<div class="hotline">
+					<ion-icon name="call"></ion-icon>
+					<span>24/7 (+84) 364638999</span>
+				</div>
+				<div class="logo">
+					<a href="#"><p>Ngx Dungx<p style="font-size: 12px; color: gray">Nhận Làm Thuê Và Bán Đồ Án Các Môn</p></p></a>
+				</div>
+				<div class="option-header">
+					<div class="search"><ion-icon name="search"></ion-icon></div>
+					<div class="bag"><ion-icon name="cart"></ion-icon></div>
+					<div class="account">
+						<ion-icon name="contact"></ion-icon>
+						<span id="user" style="font-size: 14px; position: absolute; top: 40px; right: 100px; color: gray; font-weight: bold;" onclick="showlogin();">login</span>
+					</div>
+				</div>
+			</div>		
+		</div>
+		<hr style="margin: 0">
+		<div class="bottom-header">
+			<div class="container">
+				<div class="menu-bar">
+					<div class="home"><a href="#">Home</a></div>
+					<div class="menu-icon" onclick="showMenu();">
+						<div class="line"></div>
+						<div class="line"></div>
+						<div class="line"></div>
+					</div>
+					<div class="main-menu">
+						<ul>
+							<li><a href="/homepage.aspx" class="menu home">Trang Chủ</a></li>
+							<li><a href="/info.aspx" class="menu info">Giới Thiệu</a></li>
+							<li>
+								<a href="/products.aspx" class="menu product">Sản Phẩm <i class="fas fa-chevron-down" style="font-size: 11px; color: #e60858"></i></a>
+								<ul class="sub-menu">
+									<li><a href="/products/dotnet.aspx">Lập trình .NET</a></li>
+									<li><a href="/products/web.aspx">Lập trình trên nền Web</a></li>
+									<li><a href="/products/java.aspx">Ngôn ngữ Java</a></li>
+								</ul>
+							</li>
+							<li><a href="/pay.aspx" class="menu pay">Thanh toán</a></li>
+							<li><a href="/contact.aspx" class="menu contactpage">Liên Hệ</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <div>
+        <asp:ContentPlaceHolder id="body" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    <div id="footer">
+		<div class="container">
+			<div class="footer-top">
+				<ul>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Home</a></li>
+					<li><a href="#">Home</a></li>
+				</ul>
+			</div>
+			<hr style="margin: 0; padding: 0; border: 0.5px solid #e2dbdb">
+			<div class="footer-bottom">
+				<div class="logo">Ngx Dungx</div>
+				<div class="contact">
+					<a href="https://www.instagram.com/a.k.a_ddt/"><i class="fab fa-instagram"></i></a>
+					<a href="https://www.facebook.com/say.bachaichua"><i class="fab fa-facebook-f"></i></a>
+					<a href="/homepage.aspx"><i class="fab fa-twitter"></i></a>
+				</div>
+				<a href="/pay.aspx" class="pay">
+					<i class="fab fa-cc-visa"></i>
+					<i class="fab fa-paypal"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+    </form>
+</body>
+    <script src="/javascripts/Jquery.js"></script>
+    <script src="/javascripts/JS.js"></script>
+</html>

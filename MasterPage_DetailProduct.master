@@ -1,0 +1,218 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPage_Homepage.master" AutoEventWireup="true" CodeFile="MasterPage_DetailProduct.master.cs" Inherits="MasterPage_DetailProduct" %>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="style_detailproduct" Runat="Server">
+    <style>
+        #body{
+            margin: 30px 0;
+        }
+
+        #body .container{
+            padding: 15px 15px;
+            background-color: white;
+        }
+
+        .pic-product{
+            width: 35%;
+            height: 500px;
+            float: left;
+            position: relative;
+        }
+
+        .pic-product .pic-bottom{
+           height: 18%;
+           width: 100%;
+           position: absolute;
+           bottom: 0;
+           box-sizing: border-box;
+        }
+
+        .pic-product .pic-bottom .listpic{
+            height: 100%;
+            width: 20%;
+            background-size: cover;
+            background-position: center center;
+            box-sizing: border-box;
+            cursor: pointer;
+            margin-right: 5px;
+            float: left;
+        }
+
+        .pic-product .pic-bottom .one{         
+            border: 2px solid orange;
+        }      
+
+        .pic-product .pic-top{
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            height: 80%;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .detail-product{
+            width: 62%;
+            height: 480px;
+            float: right;
+            border-bottom: 1px solid dimgray;
+        }
+
+        .detail-product .title{
+            font-size: 30px;
+        }
+
+        .detail-product .price{
+            font-size: 30px;
+            color: #e60858;
+            padding-left: 15px;
+            margin-top: 20px;
+        }
+
+        .detail-product .transport{
+            font-size: 16px;
+            margin-top: 50px;
+        }
+
+        .detail-product .transport .left{
+            float: left;
+            height: 100px;
+            margin: 0 15px;
+        }
+
+        .detail-product .rate{
+            padding: 10px 0;
+        }
+
+        .detail-product .rate .star{
+            font-size: 13px;
+            border-right: 1px solid dimgray;
+            width: 110px;
+            float: left;
+        }
+
+        .detail-product .rate .star .far:hover{
+            color: red;
+        }
+
+        .detail-product .rate .comment{
+            font-size: 15px;
+            margin-left: 130px;
+        }
+
+        .detail-product .amount{
+            font-size: 16px;
+            margin-top: 30px;
+            display: flex;
+            padding: 0 15px;
+        }
+
+        .detail-product .amount .inamount{
+            margin-right: 35px;
+            color: dimgray;
+        }
+
+        .detail-product .amount .outline{
+            border: 1px solid #b7afaf;
+            height: 20px;
+            width: 30px;
+            text-align: center;
+            box-sizing: border-box;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .detail-product .amount .number{
+            height: 20px;
+            padding: 0 20px;
+            text-align: center;
+            box-sizing: border-box;
+            border: 1px solid #b7afaf;
+        }
+
+        .detail-product .amount .amount-product{
+            margin-left: 15px;
+            color: dimgray;
+        }
+
+        .detail-product .option-buy{
+            display: flex;
+            margin-top: 30px;
+            margin-left: 15px;
+        }
+
+        .detail-product .option-buy .addbag{
+            height: 40px;
+            width: 150px;
+            border: 1px solid #ff5722;
+            line-height: 40px;
+            text-align: center;
+            padding: 0 12px;
+            color: #ff5722;
+            background-color: rgba(255,87,34,.15);
+            cursor: pointer;
+        }
+
+        .detail-product .option-buy .buy{
+            height: 40px;
+            width: 150px;
+            background-color: #ff5722; 
+            color: white;
+            line-height: 40px;
+            text-align: center;
+            padding: 0 12px;
+            margin-left: 15px;
+            cursor: pointer;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder id="style_detail" runat="server">   
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content4" ContentPlaceHolderID="body" Runat="Server">
+    <div id="body">
+        <div class="container">
+            <div class="pic-product">
+                <div class="pic-top"></div>
+                <div class="pic-bottom">
+                    <div class="listpic one"></div>
+                    <div class="listpic two"></div>
+                </div>
+            </div>
+            <div class="detail-product">
+                <asp:ContentPlaceHolder id="title" runat="server">
+                </asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder id="rate" runat="server">
+                </asp:ContentPlaceHolder>
+                <asp:ContentPlaceHolder id="price" runat="server">
+                </asp:ContentPlaceHolder>
+                <p style="font-size: 14px; padding-left: 15px;">Ở đâu rẻ hơn, NgxDungx hoàn tiền</p>
+                <div class="transport">
+                    <div class="left">Vận chuyển</div>
+                    <div class="right">
+                        <p style="color: #e60858;"><i class="far fa-calendar-alt"></i> Hàng đặt trước (có hàng sau 7 ngày)</p>
+                        <p><i class="fas fa-rss-square"></i> Miễn Phí Vận Chuyển khi đạt mức giá trị đơn hàng tối thiểu</p>
+                        <span style="color: dimgray; margin-right: 10px;"><i class="fas fa-shuttle-van"></i> Vận chuyển tới </span>
+                        <select>
+                            <option>Huyện Thạch Thất, Hà Nội</option>
+                            <option>Huyện Ba Vì, Hà Nội</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="amount">
+                    <div class="inamount">Số lượng</div>
+                    <div class="outline">-</div>
+                    <div class="number">1</div>
+                    <div class="outline">+</div>
+                    <div class="amount-product">3 sản phẩm có sẵn</div>
+                </div>
+                <div class="option-buy">
+                    <div class="addbag"><i class="fas fa-cart-plus"></i> Thêm Vào Giỏ Hàng</div>
+                    <div class="buy">Mua Ngay</div>
+                </div>
+            </div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+</asp:Content>
+
